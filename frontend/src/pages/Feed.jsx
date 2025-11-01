@@ -349,39 +349,33 @@ function Feed() {
                   sx={{ 
                     display: 'flex', 
                     justifyContent: 'space-between', 
-                    mb: 0.5,
-                    '&:hover': { bgcolor: 'action.hover' },
-                    cursor: 'pointer',
-                    borderRadius: 1,
+                    mb: 1,
                     px: 1,
                     py: 0.5,
                   }}
-                  onClick={() => navigate('/profile')}
                 >
-                  <Typography variant="caption" color="text.secondary">
-                    Profile viewers
+                  <Typography variant="body2" color="text.secondary">
+                    📝 Total Posts
                   </Typography>
-                  <Typography variant="caption" color="primary.main" fontWeight="600">
-                    {Math.floor(Math.random() * 50) + 10}
+                  <Typography variant="body2" color="primary.main" fontWeight="600">
+                    {posts.filter(p => p.user?._id === user?.id || p.user === user?.id).length}
                   </Typography>
                 </Box>
                 <Box 
                   sx={{ 
                     display: 'flex', 
                     justifyContent: 'space-between',
-                    '&:hover': { bgcolor: 'action.hover' },
-                    cursor: 'pointer',
-                    borderRadius: 1,
                     px: 1,
                     py: 0.5,
                   }}
-                  onClick={() => navigate('/profile')}
                 >
-                  <Typography variant="caption" color="text.secondary">
-                    Post impressions
+                  <Typography variant="body2" color="text.secondary">
+                    ❤️ Likes Received
                   </Typography>
-                  <Typography variant="caption" color="primary.main" fontWeight="600">
-                    {posts.reduce((acc, post) => acc + (post.views || 0), 0)}
+                  <Typography variant="body2" color="error.main" fontWeight="600">
+                    {posts
+                      .filter(p => p.user?._id === user?.id || p.user === user?.id)
+                      .reduce((acc, post) => acc + (post.likesCount || 0), 0)}
                   </Typography>
                 </Box>
               </Box>
@@ -395,32 +389,15 @@ function Feed() {
                   py: 1.5,
                   cursor: 'pointer',
                   '&:hover': { bgcolor: 'action.hover' },
+                  borderRadius: 1,
                 }}
                 onClick={() => navigate('/profile')}
               >
-                <Typography variant="body2" fontWeight="500" color="text.secondary">
-                  📌 Saved items
+                <Typography variant="body2" fontWeight="500" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <span>📌</span> Saved items
                 </Typography>
               </Box>
             </Card>
-
-            {/* Quick Action Button */}
-            <Button
-              fullWidth
-              variant="contained"
-              startIcon={<Add />}
-              onClick={() => setOpenCreatePost(true)}
-              sx={{ 
-                borderRadius: 2,
-                textTransform: 'none',
-                fontWeight: 600,
-                py: 1.2,
-                mb: 2,
-                boxShadow: '0 2px 4px rgba(41,98,255,0.2)',
-              }}
-            >
-              Create Post
-            </Button>
           </Box>
 
           {/* Main Content Area */}
