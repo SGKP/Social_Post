@@ -1,0 +1,28 @@
+{
+  "name": "social-post-app",
+  "version": "1.0.0",
+  "description": "Mini Social Post Application - 3W Internship Assignment",
+  "scripts": {
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "build-frontend": "cd frontend && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "your-github-repo-url"
+  },
+  "keywords": [
+    "social-media",
+    "react",
+    "express",
+    "mongodb",
+    "full-stack"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
