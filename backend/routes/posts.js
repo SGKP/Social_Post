@@ -15,8 +15,8 @@ router.get('/', async (req, res) => {
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit)
-      .populate('user', 'username profilePicture')
-      .populate('comments.user', 'username profilePicture');
+      .populate('user', 'username profilePicture bio')
+      .populate('comments.user', 'username profilePicture bio');
 
     const total = await Post.countDocuments();
 
@@ -44,8 +44,8 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const post = await Post.findById(req.params.id)
-      .populate('user', 'username profilePicture')
-      .populate('comments.user', 'username profilePicture');
+      .populate('user', 'username profilePicture bio')
+      .populate('comments.user', 'username profilePicture bio');
 
     if (!post) {
       return res.status(404).json({ 
@@ -91,7 +91,7 @@ router.post('/', verifyToken, async (req, res) => {
     await post.save();
 
     // Populate user data
-    await post.populate('user', 'username profilePicture');
+    await post.populate('user', 'username profilePicture bio');
 
     res.status(201).json({
       success: true,
@@ -179,7 +179,7 @@ router.post('/:id/comment', verifyToken, async (req, res) => {
     await post.save();
 
     // Populate the new comment
-    await post.populate('comments.user', 'username profilePicture');
+    await post.populate('comments.user', 'username profilePicture bio');
 
     const newComment = post.comments[post.comments.length - 1];
 
@@ -418,7 +418,7 @@ router.put('/:id', verifyToken, async (req, res) => {
     await post.save();
 
     // Populate user data
-    await post.populate('user', 'username profilePicture');
+    await post.populate('user', 'username profilePicture bio');
 
     res.json({
       success: true,

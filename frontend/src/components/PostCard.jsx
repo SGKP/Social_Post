@@ -266,9 +266,16 @@ function PostCard({ post, currentUser, onLike, onComment, onDelete, onUpdate }) 
           )
         }
         title={
-          <Typography variant="subtitle2" fontWeight="600">
-            {post.username}
-          </Typography>
+          <Box>
+            <Typography variant="subtitle2" fontWeight="600">
+              {post.username}
+            </Typography>
+            {post.user?.bio && (
+              <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.5, fontStyle: 'italic' }}>
+                {post.user.bio}
+              </Typography>
+            )}
+          </Box>
         }
         subheader={
           <Typography variant="caption" color="text.secondary">
@@ -482,9 +489,26 @@ function PostCard({ post, currentUser, onLike, onComment, onDelete, onUpdate }) 
                             }}
                           >
                             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 0.5 }}>
-                              <Typography variant="caption" fontWeight="600" color="text.primary">
-                                {comment.username}
-                              </Typography>
+                              <Box sx={{ flexGrow: 1 }}>
+                                <Typography variant="caption" fontWeight="600" color="text.primary">
+                                  {comment.username}
+                                </Typography>
+                                {comment.user?.bio && (
+                                  <Typography 
+                                    variant="caption" 
+                                    color="text.secondary" 
+                                    sx={{ 
+                                      display: 'block', 
+                                      fontSize: '0.7rem', 
+                                      fontStyle: 'italic',
+                                      mt: 0.3,
+                                      mb: 0.5
+                                    }}
+                                  >
+                                    {comment.user.bio}
+                                  </Typography>
+                                )}
+                              </Box>
                               {isCommentOwner && (
                                 <Box sx={{ ml: 1 }}>
                                   <IconButton 
