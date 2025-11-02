@@ -49,6 +49,20 @@ app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/users', userRoutes);
 
+// Root route
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'Social Post API', 
+    status: 'Running',
+    endpoints: {
+      health: '/api/health',
+      auth: '/api/auth',
+      posts: '/api/posts',
+      users: '/api/users'
+    }
+  });
+});
+
 // Health check route
 app.get('/api/health', (req, res) => {
   res.json({ status: 'Server is running', timestamp: new Date() });
