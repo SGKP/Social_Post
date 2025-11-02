@@ -282,9 +282,10 @@ function Feed() {
       <Container maxWidth="xl" sx={{ py: 3 }}>
         <Box sx={{ display: 'flex', gap: 3, flexDirection: { xs: 'column', lg: 'row' } }}>
           {/* Left Sidebar - LinkedIn Style Profile Card */}
-          <Box sx={{ flex: { lg: '0 0 280px' } }}>
+          <Box sx={{ flex: { lg: '0 0 280px' } }} className="slide-in-left">
             {/* Profile Card */}
             <Card 
+              className="hover-lift"
               sx={{ 
                 mb: 2, 
                 borderRadius: 2, 
@@ -404,6 +405,7 @@ function Feed() {
           <Box sx={{ flex: 1, maxWidth: { lg: 600 } }}>
             {/* Create Post Box - LinkedIn Style */}
             <Card 
+              className="fade-in stagger-1"
               sx={{ 
                 mb: 2, 
                 borderRadius: 2, 

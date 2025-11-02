@@ -215,15 +215,17 @@ function PostCard({ post, currentUser, onLike, onComment, onDelete, onUpdate }) 
 
   return (
     <Card 
+      className="card-enter hover-lift"
       sx={{ 
         borderRadius: 2,
         boxShadow: '0 1px 2px rgba(0,0,0,0.08)',
         border: '1px solid',
         borderColor: 'divider',
-        transition: 'box-shadow 0.2s ease',
+        transition: 'all 0.3s ease',
         '&:hover': {
-          boxShadow: '0 2px 8px rgba(0,0,0,0.12)',
-        },
+          borderColor: '#667eea',
+          boxShadow: '0 4px 12px rgba(102,126,234,0.2)',
+        }
       }}
     >
       <CardHeader
