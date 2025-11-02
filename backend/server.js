@@ -72,18 +72,22 @@ app.get('/api/health', (req, res) => {
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI;
 
+// Connect to MongoDB
 mongoose
   .connect(MONGODB_URI)
   .then(() => {
     console.log('✅ Connected to MongoDB');
-    app.listen(PORT, () => {
-      console.log(`🚀 Server running on port ${PORT}`);
-    });
   })
   .catch((error) => {
     console.error('❌ MongoDB connection error:', error);
-    process.exit(1);
   });
+
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+  });
+}
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -95,4 +99,5 @@ app.use((err, req, res, next) => {
   });
 });
 
+// Export for Vercel serverless
 export default app;
