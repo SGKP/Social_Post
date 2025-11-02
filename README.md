@@ -271,15 +271,3 @@ The UI is inspired by TaskPlanet app:
 - ✅ Protected routes and authentication
 - ✅ Delete post functionality
 
-## 👨‍💻 Developer
-
-**3W Full Stack Internship Assignment**
-- Submission Deadline: 03 Nov 2025
-
-## 📄 License
-
-This project is created for internship assignment purposes.
-
----
-
-**Built with ❤️ for 3W Internship Assignment**
